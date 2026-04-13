@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, MessageSquare } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
-import TestimonialCard from "@/components/TestimonialCard";
+// import TestimonialCard from "@/components/TestimonialCard";
 
 export default function Testimonials() {
   // Duplicate testimonials for infinite carousel effect
