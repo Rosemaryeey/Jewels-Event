@@ -128,10 +128,10 @@ ${formData.message}`;
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:jewelsheartfoundation@gmail.com"
+                      href="mailto:jewelsheartfoundation06@gmail.com"
                       className="text-white/60 hover:text-gold transition-colors"
                     >
-                      jewelsheartfoundation@gmail.com
+                      jewelsheartfoundation06@gmail.com
                     </a>
                   </div>
                 </div>

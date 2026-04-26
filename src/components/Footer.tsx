@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  Gem,
-  Phone,
-  Mail,
-  MapPin,
-  Instagram,
-  Facebook,
-} from "lucide-react";
- import { FaTiktok } from "react-icons/fa";
+import { Gem, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -136,10 +129,10 @@ export default function Footer() {
                 <div>
                   <p className="text-white text-sm font-medium">Email</p>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=jewelsheartfoundation@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=jewelsheartfoundation06@gmail.com"
                     className="text-white/60 hover:text-gold transition-colors text-sm"
                   >
-                    jewelsheartfoundation@gmail.com
+                    jewelsheartfoundation06@gmail.com
                   </a>
                 </div>
               </li>
