@@ -28,6 +28,18 @@ const services = [
 export default function Footer() {
   const [siteContent] = useState(() => loadSiteContent());
 
+    const handleEmailClick = () => {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = `mailto:${siteContent.email}`;
+      } else {
+        window.open(
+          `https://mail.google.com/mail/?view=cm&fs=1&to=${siteContent.email}`,
+          "_blank",
+        );
+      }
+    };
   return (
     <footer className="bg-luxury-dark border-t border-white/5">
       {/* Main Footer */}
@@ -134,6 +146,8 @@ export default function Footer() {
                 <div>
                   <p className="text-white text-sm font-medium">Email</p>
                   <a
+                    type="button"
+                    onClick={handleEmailClick}
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
                       siteContent.email,
                     )}`}

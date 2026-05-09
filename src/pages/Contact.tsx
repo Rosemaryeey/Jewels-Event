@@ -24,6 +24,21 @@ export default function Contact() {
   });
   const [siteContent] = useState(() => loadSiteContent());
 
+  const email = "jewelsheartfoundation06@gmail.com";
+
+  const handleEmailClick = () => {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = `mailto:${email}`;
+    } else {
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`,
+        "_blank",
+      );
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -129,16 +144,13 @@ ${formData.message}`;
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email</h3>
-                    <a
-                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-                        siteContent.email,
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
+                      onClick={handleEmailClick}
                       className="text-white/60 hover:text-gold transition-colors text-sm"
                     >
                       {siteContent.email}
-                    </a>
+                    </button>
                   </div>
                 </div>
 
