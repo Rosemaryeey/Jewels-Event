@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Gem, Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
+import { loadSiteContent } from "@/lib/admin";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -12,10 +14,11 @@ const quickLinks = [
 ];
 
 const services = [
-  { name: "Wedding Decoration", href: "/packages" },
-  { name: "Birthday Parties", href: "/packages" },
-  { name: "Corporate Events", href: "/packages" },
-  { name: "Traditional Events", href: "/packages" },
+  { name: "Wedding Decoration", href: "/packages#package" },
+  { name: "Burials Ceremonies", href: "/work" },
+  { name: "Birthday Parties", href: "/packages#package" },
+  { name: "Corporate Events", href: "/work#work" },
+  { name: "Traditional Events", href: "/packages#package" },
   { name: "Catering Services", href: "/contact" },
   { name: "Pastries & Desserts", href: "/contact" },
   { name: "Chair Rentals", href: "/rentals" },
@@ -23,6 +26,8 @@ const services = [
 ];
 
 export default function Footer() {
+  const [siteContent] = useState(() => loadSiteContent());
+
   return (
     <footer className="bg-luxury-dark border-t border-white/5">
       {/* Main Footer */}
@@ -42,7 +47,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/jewels_event?igsh=MjN6NTIzenB0azNz&utm_source=qr"
+                href={siteContent.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -50,7 +55,7 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://facebook.com/jewelsevent"
+                href={siteContent.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -58,7 +63,7 @@ export default function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://www.tiktok.com/@jewels.event?_r=1&_t=ZS-95TyCJ0kaLh"
+                href={siteContent.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -117,10 +122,10 @@ export default function Footer() {
                 <div>
                   <p className="text-white text-sm font-medium">Phone</p>
                   <a
-                    href="tel:+2348037419758"
+                    href={`tel:${siteContent.phone}`}
                     className="text-white/60 hover:text-gold transition-colors text-sm"
                   >
-                    +234 803 741 9758
+                    {siteContent.phone}
                   </a>
                 </div>
               </li>
@@ -129,10 +134,14 @@ export default function Footer() {
                 <div>
                   <p className="text-white text-sm font-medium">Email</p>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=jewelsheartfoundation06@gmail.com"
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                      siteContent.email,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-white/60 hover:text-gold transition-colors text-sm"
                   >
-                    jewelsheartfoundation06@gmail.com
+                    {siteContent.email}
                   </a>
                 </div>
               </li>
@@ -140,7 +149,9 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white text-sm font-medium">Location</p>
-                  <p className="text-white/60 text-sm">Abia, Nigeria</p>
+                  <p className="text-white/60 text-sm">
+                    {siteContent.location}
+                  </p>
                 </div>
               </li>
             </ul>

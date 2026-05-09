@@ -30,7 +30,6 @@ export default function Packages() {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/decor2.mp4" type="video/mp4" />
-          
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-black/90 via-luxury-dark/60 to-luxury-black/90" />
@@ -63,7 +62,10 @@ export default function Packages() {
       </section>
 
       {/* Packages Grid */}
-      <section className="section-padding bg-luxury-dark relative overflow-hidden">
+      <section
+        id="package"
+        className="section-padding bg-luxury-dark relative overflow-hidden"
+      >
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="container-luxury mx-auto relative z-10">

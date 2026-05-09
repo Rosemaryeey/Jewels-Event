@@ -1,7 +1,17 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Calendar, Users, MapPin, Phone, User, MessageSquare, Package as PackageIcon } from 'lucide-react';
-import type { Package } from '@/data/packages';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  Send,
+  Calendar,
+  Users,
+  MapPin,
+  Phone,
+  User,
+  MessageSquare,
+  Package as PackageIcon,
+} from "lucide-react";
+import type { Package } from "@/data/packages";
 
 interface PackageFormModalProps {
   isOpen: boolean;
@@ -20,35 +30,43 @@ interface FormData {
 }
 
 const eventTypes = [
-  'Wedding',
-  'Birthday',
-  'Corporate',
-  'Traditional',
-  'Anniversary',
-  'Bridal Shower',
-  'Baby Shower',
-  'Other',
+  "Wedding",
+  "Birthday",
+  "Corporate",
+  "Traditional",
+  "Anniversary",
+  "Bridal Shower",
+  "Baby Shower",
+  "Other",
 ];
 
-export default function PackageFormModal({ isOpen, onClose, selectedPackage }: PackageFormModalProps) {
+export default function PackageFormModal({
+  isOpen,
+  onClose,
+  selectedPackage,
+}: PackageFormModalProps) {
   const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    phoneNumber: '',
-    eventType: '',
-    eventDate: '',
-    eventLocation: '',
-    expectedGuests: '',
-    extraNotes: '',
+    fullName: "",
+    phoneNumber: "",
+    eventType: "",
+    eventDate: "",
+    eventLocation: "",
+    expectedGuests: "",
+    extraNotes: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!selectedPackage) return;
 
     const message = `Hello Jewels Event 👋
@@ -58,22 +76,22 @@ I'm interested in the ${selectedPackage.name}.
 Name: ${formData.fullName}
 Phone: ${formData.phoneNumber}
 Event Type: ${formData.eventType}
-Date: ${formData.eventDate ? new Date(formData.eventDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Not specified'}
+Date: ${formData.eventDate ? new Date(formData.eventDate).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" }) : "Not specified"}
 Location: ${formData.eventLocation}
-Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.extraNotes}` : ''}`;
+Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.extraNotes}` : ""}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/2348012345678?text=${encodedMessage}`, '_blank');
-    
+    window.open(`https://wa.me/2348037419758?text=${encodedMessage}`, "_blank");
+
     onClose();
     setFormData({
-      fullName: '',
-      phoneNumber: '',
-      eventType: '',
-      eventDate: '',
-      eventLocation: '',
-      expectedGuests: '',
-      extraNotes: '',
+      fullName: "",
+      phoneNumber: "",
+      eventType: "",
+      eventDate: "",
+      eventLocation: "",
+      expectedGuests: "",
+      extraNotes: "",
     });
   };
 
@@ -100,7 +118,7 @@ Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.e
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="glass-card border border-gold/20 overflow-hidden">
@@ -112,7 +130,7 @@ Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.e
                 >
                   <X className="w-5 h-5" />
                 </button>
-                
+
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
                     <PackageIcon className="w-5 h-5 text-gold" />
@@ -121,9 +139,7 @@ Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.e
                     <h2 className="text-xl font-serif font-bold text-white">
                       Book Your Package
                     </h2>
-                    <p className="text-gold text-sm">
-                      {selectedPackage?.name}
-                    </p>
+                    <p className="text-gold text-sm">{selectedPackage?.name}</p>
                   </div>
                 </div>
               </div>
@@ -178,9 +194,15 @@ Guests: ${formData.expectedGuests}${formData.extraNotes ? `\nNotes: ${formData.e
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all appearance-none cursor-pointer"
                     >
-                      <option value="" className="bg-luxury-dark">Select event type</option>
+                      <option value="" className="bg-luxury-dark">
+                        Select event type
+                      </option>
                       {eventTypes.map((type) => (
-                        <option key={type} value={type} className="bg-luxury-dark">
+                        <option
+                          key={type}
+                          value={type}
+                          className="bg-luxury-dark"
+                        >
                           {type}
                         </option>
                       ))}

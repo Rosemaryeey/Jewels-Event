@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Armchair, Search, ArrowRight } from "lucide-react";
-import { rentals, rentalCategories } from "@/data/rentals";
+import { rentalCategories } from "@/data/rentals";
+import { loadRentalItems } from "@/lib/admin";
 import RentalCard from "@/components/RentalCard";
 
 export default function Rentals() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [rentals] = useState(() => loadRentalItems());
 
   const filteredRentals = rentals.filter((rental) => {
     const matchesCategory =

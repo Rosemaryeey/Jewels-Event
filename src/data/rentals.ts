@@ -22,7 +22,7 @@ export const rentals: RentalItem[] = [
     name: 'Luxury Tents',
     description: 'Spacious, weather-resistant tents perfect for outdoor events. Available in various sizes.',
     category: 'Tents & Canopy',
-    price: 'From ₦50,000',
+    price: 'From ₦500,000',
   },
   {
     id: 'canopy',
@@ -57,14 +57,14 @@ export const rentals: RentalItem[] = [
     name: 'Throne Chairs',
     description: 'Majestic throne chairs for the bride, groom, or special guests of honor.',
     category: 'Seating',
-    price: 'From ₦15,000',
+    price: 'From ₦35,000',
   },
   {
     id: 'round-tables',
     name: 'Round Tables',
     description: 'Classic round tables perfect for dining setups and guest seating.',
     category: 'Tables',
-    price: 'From ₦3,000/table',
+    price: 'From ₦5,000/table',
   },
   {
     id: 'rectangle-tables',
@@ -99,6 +99,6 @@ export const rentals: RentalItem[] = [
     name: 'Stage Platforms',
     description: 'Professional stage platforms for performances, speeches, and ceremonies.',
     category: 'Stage',
-    price: 'From ₦25,000',
+    price: 'From ₦40,000',
   },
 ];

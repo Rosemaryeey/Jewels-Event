@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Images, MapPin } from "lucide-react";
-import { galleryItems, galleryCategories } from "@/data/gallery";
+import { galleryCategories } from "@/data/gallery";
+import { loadGalleryItems } from "@/lib/admin";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [galleryItems] = useState(() => loadGalleryItems());
   const [selectedItem, setSelectedItem] = useState<
     (typeof galleryItems)[0] | null
   >(null);
@@ -49,7 +51,10 @@ export default function Work() {
       </section>
 
       {/* Gallery Section */}
-      <section className="section-padding bg-luxury-dark relative overflow-hidden">
+      <section
+        id="work"
+        className="section-padding bg-luxury-dark relative overflow-hidden"
+      >
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="container-luxury mx-auto relative z-10">

@@ -11,6 +11,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
+import { loadSiteContent } from "@/lib/admin";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ export default function Contact() {
     eventDate: "",
     message: "",
   });
+  const [siteContent] = useState(() => loadSiteContent());
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,10 +115,10 @@ ${formData.message}`;
                   <div>
                     <h3 className="text-white font-semibold mb-1">Phone</h3>
                     <a
-                      href="tel:+2348037419758"
+                      href={`tel:${siteContent.phone}`}
                       className="text-white/60 hover:text-gold transition-colors"
                     >
-                      +234 803 741 9758
+                      {siteContent.phone}
                     </a>
                   </div>
                 </div>
@@ -128,10 +130,14 @@ ${formData.message}`;
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:jewelsheartfoundation06@gmail.com"
-                      className="text-white/60 hover:text-gold transition-colors"
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                        siteContent.email,
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/60 hover:text-gold transition-colors text-sm"
                     >
-                      jewelsheartfoundation06@gmail.com
+                      {siteContent.email}
                     </a>
                   </div>
                 </div>
@@ -148,7 +154,7 @@ ${formData.message}`;
                       rel="noopener noreferrer"
                       className="text-white/60 hover:text-gold transition-colors"
                     >
-                      Aba, Nigeria
+                      {siteContent.location}
                     </a>
                   </div>
                 </div>
@@ -173,7 +179,7 @@ ${formData.message}`;
                 <h3 className="text-white font-semibold mb-4">Follow Us</h3>
                 <div className="flex gap-4">
                   <a
-                    href="https://www.instagram.com/jewels_event?igsh=MjN6NTIzenB0azNz&utm_source=qr"
+                    href="https://www.instagram.com/jewels_event?igsh=a3NoOWVzbmJjMTY2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -181,7 +187,7 @@ ${formData.message}`;
                     <Instagram className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://facebook.com/jewelsevent"
+                    href="https://www.facebook.com/share/1BDK1xV2Vc/?mibextid=wwXIfr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -190,7 +196,7 @@ ${formData.message}`;
                   </a>
 
                   <a
-                    href="https://www.tiktok.com/@jewels.event?_r=1&_t=ZS-95TyCJ0kaLh"
+                    href="https://www.tiktok.com/@jewels.event?_r=1&_t=ZS-96CVlJ3dSNk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/60 hover:bg-gold hover:text-luxury-black transition-all duration-300"
@@ -224,7 +230,7 @@ ${formData.message}`;
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
+                        placeholder="Obi"
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all"
                       />
                     </div>
@@ -238,7 +244,7 @@ ${formData.message}`;
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="john@example.com"
+                        placeholder="obi@example.com"
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all"
                       />
                     </div>
@@ -337,25 +343,25 @@ ${formData.message}`;
         </div>
       </section>
 
-      {/* Map Placeholder */}
+      {/* Live Map */}
       <section className="section-padding bg-luxury-black relative overflow-hidden">
         <div className="container-luxury mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card overflow-hidden border border-white/10"
+            className="overflow-hidden border border-white/10 rounded-lg"
           >
-            <div className="aspect-[21/9] bg-luxury-light relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-luxury-dark to-luxury-black" />
-              <div className="relative z-10 text-center">
-                <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
-                <h3 className="text-xl font-serif font-bold text-white mb-2">
-                  Jewels Event
-                </h3>
-                <p className="text-white/60">Aba, Nigeria</p>
-              </div>
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.2789999999997!2d7.3363091!3d5.1445714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10429a336fd372d7%3A0x4b78ea7844545bf6!2s267%20Aba-Owerri%20Rd%2C%20Abayi%2C%20Aba%20450272%2C%20Abia!5e0!3m2!1sen!2sng!4v1234567890"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            />
           </motion.div>
         </div>
       </section>

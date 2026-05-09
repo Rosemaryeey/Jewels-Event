@@ -1,24 +1,31 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import Home from '@/pages/Home';
-import About from '@/pages/About';
-import Work from '@/pages/Work';
-import Packages from '@/pages/Packages';
-import Rentals from '@/pages/Rentals';
-import Contact from '@/pages/Contact';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollToHash from "@/components/ScrollToHash";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
+import Work from "@/pages/Work";
+import Packages from "@/pages/Packages";
+import Rentals from "@/pages/Rentals";
+import Contact from "@/pages/Contact";
+import Admin from "@/pages/Admin";
 
 // Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return null;
 }
 
@@ -38,12 +45,13 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
 
 function AppContent() {
   const location = useLocation();
-  
+
   return (
     <div className="min-h-screen bg-luxury-black">
       <ScrollToTop />
+      <ScrollToHash />
       <Navbar />
-      
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
@@ -94,9 +102,17 @@ function AppContent() {
               </PageWrapper>
             }
           />
+          <Route
+            path="/admin"
+            element={
+              <PageWrapper>
+                <Admin />
+              </PageWrapper>
+            }
+          />
         </Routes>
       </AnimatePresence>
-      
+
       <Footer />
       <WhatsAppButton />
     </div>

@@ -73,10 +73,21 @@ export default function Testimonials() {
                     </div>
 
                     {/* Rating */}
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
+                    <div className="flex gap-1 mb-4 items-center">
+                      {Array.from({ length: Math.floor(testimonial.rating) }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                       ))}
+                      {testimonial.rating % 1 >= 0.5 && (
+                        <div className="relative w-4 h-4">
+                          <Star className="w-4 h-4 text-gold" />
+                          <div className="absolute left-0 top-0 w-2 h-4 overflow-hidden">
+                            <Star className="w-4 h-4 fill-gold text-gold" />
+                          </div>
+                        </div>
+                      )}
+                      <span className="text-gold text-xs ml-2 font-medium">
+                        {testimonial.rating.toFixed(1)}
+                      </span>
                     </div>
 
                     {/* Content */}
@@ -119,13 +130,19 @@ export default function Testimonials() {
           className="text-center"
         >
           <div className="inline-flex items-center gap-4 px-8 py-4 glass-card border border-gold/20">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
+            <div className="flex gap-1 items-center">
+              {[...Array(4)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-gold text-gold" />
               ))}
+              <div className="relative w-5 h-5">
+                <Star className="w-5 h-5 text-gold" />
+                <div className="absolute left-0 top-0 w-2 h-5 overflow-hidden">
+                  <Star className="w-5 h-5 fill-gold text-gold" />
+                </div>
+              </div>
             </div>
             <span className="text-white font-medium">
-              Rated 5.0 by 500+ Happy Clients
+              Rated 4.5 by 500+ Happy Clients
             </span>
           </div>
         </motion.div>
