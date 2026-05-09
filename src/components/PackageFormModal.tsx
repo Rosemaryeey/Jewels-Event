@@ -31,6 +31,7 @@ interface FormData {
 
 const eventTypes = [
   "Wedding",
+  "Burial",
   "Birthday",
   "Corporate",
   "Traditional",
